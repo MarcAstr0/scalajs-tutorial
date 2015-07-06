@@ -3,6 +3,7 @@ package tutorial.webapp
 import scala.scalajs.js.JSApp
 import org.scalajs.dom
 import dom.document
+import scala.scalajs.js.annotation.JSExport
 
 /**
  * Created by mcastro on 06-07-2015.
@@ -29,5 +30,10 @@ object TutorialApp extends JSApp {
       ul.appendChild(li)
     }
     document.body.appendChild(ul)
+  }
+
+  @JSExport
+  def addClickedMessage(): Unit = {
+    appendPar(document.body, "You clicked the button!")
   }
 }
