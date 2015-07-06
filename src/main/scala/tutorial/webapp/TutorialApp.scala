@@ -4,6 +4,7 @@ import scala.scalajs.js.JSApp
 import org.scalajs.dom
 import dom.document
 import scala.scalajs.js.annotation.JSExport
+import org.scalajs.jquery.jQuery
 
 /**
  * Created by mcastro on 06-07-2015.
@@ -11,7 +12,7 @@ import scala.scalajs.js.annotation.JSExport
 object TutorialApp extends JSApp {
   def main(): Unit = {
 //    println("Hello world!")
-    appendPar(document.body, "Hello world!")
+    jQuery("body").append("<p>Hello world!</p>")
     appendUl(document.body, List("First element", "Second Element", "Third Element"))
   }
 
@@ -34,6 +35,6 @@ object TutorialApp extends JSApp {
 
   @JSExport
   def addClickedMessage(): Unit = {
-    appendPar(document.body, "You clicked the button!")
+    jQuery("body").append("<p>You clicked the button!</p>")
   }
 }
