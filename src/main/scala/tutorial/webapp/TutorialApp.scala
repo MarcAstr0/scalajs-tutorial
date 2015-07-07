@@ -15,17 +15,23 @@ object TutorialApp extends JSApp {
   }
 
   def setupUI(): Unit = {
-    jQuery("#click-me-button").click(addClickedMessage _)
+    jQuery("""<button type="button">Click me!</button>""").click(addClickedMessage _).appendTo(jQuery("body"))
     jQuery("body").append("<p>Hello world!</p>")
     jQuery("body").append("<ul id=\"the-list\"></ul>")
     val list = List("First element", "Second element")
     for (item <- list) {
       jQuery("#the-list").append("<li>" + item + "</li>")
     }
+    jQuery("body").append("<p id=\"some-id\">This paragraph will turn red when the button is clicked.</p>")
+    jQuery("""<button type="button">Click to change color</button>""").click(changeColor _).appendTo(jQuery("body"))
   }
 
-  @JSExport
   def addClickedMessage(): Unit = {
     jQuery("body").append("<p>You clicked the button!</p>")
   }
+
+  def changeColor(): Unit = {
+    if (jQuery("#some-id").hasClass("red")) jQuery("#some-id").removeClass("red") else jQuery("#some-id").addClass("red")
+  }
+
 }
